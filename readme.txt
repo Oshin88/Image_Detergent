@@ -1,3 +1,5 @@
+I used python 3.5 for this dont judge me :|
+
 Detergent.py
 
 Methods 'Get_Edge_Intensity', 'is_Blurry', 'get_emax', 'get_Edge_Map' are based on the paper 
