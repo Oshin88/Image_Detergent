@@ -30,7 +30,7 @@ class Detergent:
 		pic_file = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 		x = numpy.asarray(pic_file)
 		x_cropped=x[0:(numpy.shape(x)[0]/16)*16 - 1,0:(numpy.shape(x)[1]/16)*16 - 1]
-		LL1,(LH1,HL1,HH1) = pywt.dwt2(x_cropped,   'haar')
+		LL1,(LH1,HL1,HH1) = pywt.dwt2(x_cropped, 'haar')
 		LL2,(LH2,HL2,HH2) = pywt.dwt2(LL1, 'haar')
 		LL3,(LH3,HL3,HH3) = pywt.dwt2(LL2, 'haar')
 		#calculate Emap for each of the 3 quadrants
@@ -67,19 +67,19 @@ class Detergent:
 			horizontal_index = 0
 			for j in range(0, w):
 				#print("j: " + str(j))
+				#get maximum window value within the given window
+				#size of the window range is determined by the increment
 				max_window = numpy.max(numpy.max(emap[vertical_index : vertical_index + 
 							 increment, horizontal_index : horizontal_index + increment]))
 				Emax[i, j] = max_window
-				#print(Emax.item(i, j))
-				#print(max_window)
-				horizontal_index += 1 # += window_size
-				#print("hor: " + str(horizontal_index))
+				horizontal_index += 1
 			vertical_index += 1
 
 		return Emax
 
 
 	#given the Emax1, Emax2, and Emax3 construct an Edge Map
+	#threshold is the level of tolerance towards the extent of the image sharpeness
 	def get_Edge_Map(self, Emax1, Emax2, Emax3, threshold):
 		edge = 0
 		da   = 0
@@ -112,13 +112,7 @@ class Detergent:
 			blur = 0
 		else:
 			blur = da / edge
-			#print(da)
-			#print(edge)
-		''' for testing/analysis
-		print('brg = ' + str(brg))
-		print('rg = ' + str(rg))
-		print('blur = ' + str(blur))
-		'''
+
 		#for some blurry images yield rg = 0 and to avoid division by 0 we set extent = 0
 		if rg == 0:
 			#print('rg = 0')
@@ -131,6 +125,3 @@ class Detergent:
 
 	if __name__ == "__main__":
 		main()
-
-
-	#find dominating colours in a given image
