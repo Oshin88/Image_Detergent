@@ -10,3 +10,4 @@ as blurry and which ones are sharp. (NOTE: Images that have high resolution by a
 on one object within the frame and thus leaving the background blurry will be classified
 as blurry, hence currently working on to adding a method to separate these types of images as well and 
 some other cool/useful features that deal with digital images).
+
