@@ -28,8 +28,6 @@ Emax2(k,l) > Emax1(k,l) and
 Emax2(k,l) > Emax3(k,l) ,(k,l) isRoof-Structure. Rule5: For any Gstep-Structure or Roof-Structure edge point (k,l) , if E max1(k,l) < threshold , (k,l) is more likely to be in a blurred image.
 
 
-------------------------------------------------------------------------------------------------------
-
 
 Step1: Perform algorithm 1 on the given image;
 
