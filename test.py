@@ -15,9 +15,4 @@ for pic in pics:
 	detergent.is_Blurry(blur, extent)
 	print("")
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 03202a96993b8aff5a49e5dfe6b17aaeea7ace75
