@@ -51,3 +51,146 @@ close to zero;
 Step7: Calculate how many Roof-Structure and Gstep Structure edges are blurred:
 BlurExtent = Nbrg/Nrg.
 output BlurExtent as blur cofident coefficient for the image.
+
+
+------------------------------------------------------------------------------------------------------
+
+To determine if the given image is focused we use the following methods 'fft' (Fast Fourier Transform)
+and 'test_focus'. NOTE: Gaussian_Laplace is not used but rather might be useful for analysis and 
+future modifications/statistical analysis. NOTE: Blur test might fail on an image which is in focus,
+since it might have blurry parts which would fail the blur test.
+
+methods:
+
+fft(image_path) -> average of highest frequencies within the provided image
+
+test_focus(image_path, threshold = 300) -> if the provided image's average frequency is >= 300 then
+										   the image is in focus
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Folders:
+
+'./pic/'              ->  contains sample pictures for testing purposes (NOTE: I do not own the rights 
+      					  to the provided images they are for educational purposes only, all the rights 
+      					  belong to the authors of the images.)
+
+'./resources/'        ->  contains the scientific paper (pdf) for the 
+                          "Blur Detection for Digital Images Using Wavelet Transform". 
+
+
+
+
+------------------------------------------------------------------------------------------------------
+
+Results based on the sample images provided within the './pic/' path (output of the test.py):
+
+./pic/blurry.jpg
+avr freq: 162.807643461
+focused: False
+Image is blurry. The blur extent is 1.0
+
+./pic/blurry1.jpg
+avr freq: 223.188513399
+focused: False
+Image is blurry. The blur extent is 0.7273909006499536
+
+./pic/blurry2.jpg
+avr freq: 293.478828637
+focused: False
+Image is blurry. The blur extent is 1.0
+
+./pic/blurry3.jpg
+avr freq: 275.698180133
+focused: False
+Image is blurry. The blur extent is 1.0
+
+./pic/blurry_outlier.jpg
+avr freq: 329.182987421
+focused: True
+Image is not blurry. 0.7362204724409449
+
+./pic/focused1.jpg
+avr freq: 352.073538241
+focused: True
+Image is blurry. The blur extent is 1.0
+
+./pic/focused2.jpg
+avr freq: 600.001343694
+focused: True
+Image is blurry. The blur extent is 1.0
+
+./pic/focused3.jpg
+avr freq: 322.951962732
+focused: True
+Image is blurry. The blur extent is 1.0
+
+./pic/focused4.jpg
+avr freq: 607.884073166
+focused: True
+Image is blurry. The blur extent is 1.0
+
+./pic/focused5.jpg
+avr freq: 321.428007723
+focused: True
+Image is blurry. The blur extent is 0.9994565873686753
+
+./pic/focused_and_not_blurry.jpg
+avr freq: 241.457562504
+focused: False
+Image is not blurry. 0.6414598540145985
+
+./pic/focused_outlier.png
+avr freq: 339.641709053
+focused: True
+Image is blurry. The blur extent is 1.0
+
+./pic/focused_outlier1.jpg
+avr freq: 115.350247097
+focused: False
+Image is blurry. The blur extent is 0.8317329675354367
+
+./pic/not_blurry.jpg
+avr freq: 368.804667576
+focused: True
+Image is not blurry. 0.01057928009289124
+
+./pic/not_blurry1.jpg
+avr freq: 223.302124968
+focused: False
+Image is not blurry. 0.14719726144629866
+
+./pic/not_blurry2.jpg
+avr freq: 280.04170731
+focused: False
+Image is not blurry. 0.009106984969053935
+
+./pic/not_blurry3.jpg
+avr freq: 208.06130711
+focused: False
+Image is not blurry. 0.17650657693484245
+
+./pic/not_blurry_outlier.jpg
+avr freq: 135.110730833
+focused: False
+Image is blurry. The blur extent is 0.6017763541059988
+
+./pic/outlier.jpg
+avr freq: 239.328366547
+focused: False
+Image is blurry. The blur extent is 1.0
+
+
+
+NOTE: Further analysis might be required to further close the gap on the images marked as outliers.
+       ex. 'not_blurry_outlier.jpg': should be marked as 'Not Blurry'
+
+            'focused_outlier.jpg': marked as focused however it is based on user's opinion since
+            it is not 100% focused nor definitively blurry or out of focus
+
+            'focused_outlier.jpg': marked as not focused however the image is focused 
+
+------------------------------------------------------------------------------------------------------
+
