@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 I used python 3.5 for this dont judge me :|
 
->>>>>>> 03202a96993b8aff5a49e5dfe6b17aaeea7ace75
 Detergent.py
 
 Methods 'Get_Edge_Intensity', 'is_Blurry', 'get_emax', 'get_Edge_Map' are based on the paper 
@@ -31,11 +28,6 @@ Emax2(k,l) > Emax1(k,l) and
 Emax2(k,l) > Emax3(k,l) ,(k,l) isRoof-Structure. Rule5: For any Gstep-Structure or Roof-Structure edge point (k,l) , if E max1(k,l) < threshold , (k,l) is more likely to be in a blurred image.
 
 
-<<<<<<< HEAD
-------------------------------------------------------------------------------------------------------
-
-=======
->>>>>>> 03202a96993b8aff5a49e5dfe6b17aaeea7ace75
 
 Step1: Perform algorithm 1 on the given image;
 
@@ -71,8 +63,7 @@ methods:
 fft(image_path) -> average of highest frequencies within the provided image
 
 test_focus(image_path, threshold = 300) -> if the provided image's average frequency is >= 300 then
-										   the image is in focus
-
+					   the image is in focus
 
 
 ------------------------------------------------------------------------------------------------------
@@ -88,8 +79,8 @@ Folders:
 
 
 
-
 ------------------------------------------------------------------------------------------------------
+
 
 Results based on the sample images provided within the './pic/' path (output of the test.py):
 
@@ -199,7 +190,3 @@ NOTE: Further analysis might be required to further close the gap on the images 
             'focused_outlier.jpg': marked as not focused however the image is focused 
 
 ------------------------------------------------------------------------------------------------------
-<<<<<<< HEAD
-=======
-
->>>>>>> 03202a96993b8aff5a49e5dfe6b17aaeea7ace75
